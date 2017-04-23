@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
-  width: 45em;
+  width: 60em;
   border: 1px solid #ddd;
   outline: 1300px solid #fff;
   margin: 16px auto;
@@ -8,6 +8,7 @@
 body .markdown-body
 {
   padding: 30px;
+  background: #eee;
 }
 
 @font-face {
@@ -1014,7 +1015,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>git+github+gulp笔记</title></head><body><article class="markdown-body"><h2 id="git"><a name="user-content-git" href="#git" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Git</h2>
+</style><title>git+github+npm笔记</title></head><body><article class="markdown-body"><h2 id="git"><a name="user-content-git" href="#git" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Git</h2>
 <h3 id="git_1"><a name="user-content-git_1" href="#git_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>什么是Git?</h3>
 <ul>
 <li>Git是一款源代码管理工具(版本控制工具)<ul>
@@ -1211,94 +1212,153 @@ body .markdown-body
 <h3 id="pushpull"><a name="user-content-pushpull" href="#pushpull" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>把代码push到服务器时需要先pull一下</h3>
 <ul>
 <li>在pull之后如果远程的代码与本地的代码有冲突，git会先自动合并冲突，如果不能自动合并，就必需我们手动去处理冲突。</li>
+<li>冲突一般是有分支合并和分支名不同产生的。</li>
 </ul>
 <h3 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>从服务器上下载代码到本地</h3>
 <ul>
-<li>在github上直接点击Download下载代码压缩包。</li>
-<li>clone的方法,命令：<code>git clone [远程服务器地址]</code></li>
+<li>在github上直接点击Download下载代码压缩包<ul>
+<li>下载仓库里面的文件压缩包，但不下载.git文件</li>
+</ul>
+</li>
+<li>clone的方法,命令：<code>git clone [远程服务器地址]</code><ul>
+<li>不需要初始化，直接克隆仓库的内容，包括分支。</li>
+</ul>
+</li>
 <li>通过pull方法下载代码<ul>
 <li>如果本地没有.git目录，需要先初始化一下。</li>
 <li>命令:<code>git pull [远程服务器地址] [远程的分支]</code></li>
+<li>这种方式一般是在项目管理时使用，如果用此方法下载别人的项目会存在.git分支的差异。</li>
 </ul>
 </li>
 </ul>
 <h3 id="gh-pages-"><a name="user-content-gh-pages-" href="#gh-pages-" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>gh-pages分支-搭建博客.</h3>
 <ul>
-<li>需要把自已博客的网页代码上传到github上的gh-pages分支</li>
-<li>然后就直接访问了<ul>
+<li>需要把网页代码上传到github上的gh-pages分支<ul>
+<li>初始化.git文件夹，添加和提交代码到仓库。</li>
+<li>创建gh-pages分支并切换到该分支。</li>
+<li>在该分支下push到远程服务器的gh-pages分支。</li>
+</ul>
+</li>
+<li>然后直接访问<ul>
 <li>访问的url形式: [github用户名].github.io/[仓库的名字]/[具体的页面]</li>
 </ul>
 </li>
 </ul>
-<h3 id="sourcetree-tortoisegit"><a name="user-content-sourcetree-tortoisegit" href="#sourcetree-tortoisegit" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>sourceTree , tortoiseGit</h3>
-<h3 id="npm"><a name="user-content-npm" href="#npm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>npm</h3>
+<h3 id="gitsourcetree-tortoisegit"><a name="user-content-gitsourcetree-tortoisegit" href="#gitsourcetree-tortoisegit" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>git的可视化工具sourceTree , tortoiseGit</h3>
+<ul>
+<li>以tortoiseGit为例<ul>
+<li>下载安装tortoiseGit</li>
+<li>在文件夹右键选择：Git Create repository here&hellip;生产.git目录</li>
+<li>右键：选择TortoiseGit，然后选择Add，勾选要添加的文件。</li>
+<li>右键：选择Git Commit &ndash;&gt; &lsquo;master&rsquo;&hellip;</li>
+<li>公钥和私钥：</li>
+<li>在安装目录的bin目录下点开puttygen.exe</li>
+<li>然后点Generate根据鼠标滑动生产公钥私钥。</li>
+<li>public为公钥，将其保存在github上，点击Sava private key保存私钥在本地。</li>
+<li>右键：setting配置Remote、URL、Push URL、Putty Key。</li>
+<li>Putty key为保存的私钥路径。</li>
+<li>Remote为变量名，指向URL。</li>
+<li>URL为要提交的远程仓库的地址。</li>
+<li>右键：选择TortoiseGit,然后选择push，填写分支，变量名。</li>
+</ul>
+</li>
+</ul>
+<h3 id="npm"><a name="user-content-npm" href="#npm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>npm的介绍</h3>
 <ul>
 <li>官网[<a href="https://www.npmjs.com">https://www.npmjs.com</a>]</li>
 <li>node package manager</li>
-<li>命令:<ul>
-<li>初始化:<code>npm init</code></li>
-<li>安装指定包:<code>npm install jquery --save</code></li>
-<li>删除指定包:<code>npm remove jquery --save</code></li>
-<li>下载安装package.json中dependencies属性对的文件:<code>npm install --production</code></li>
+<li>npm集成在node中，是node环境下的一个包管理工具，关联和管理需要下载的文件。</li>
+</ul>
+<h3 id="npm_1"><a name="user-content-npm_1" href="#npm_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>npm的安装</h3>
+<ul>
+<li>在node官网下载并安装node.js<ul>
+<li>在命令窗口输入：<code>node</code>/<code>npm</code>/<code>node -v</code>/<code>npm -v</code></li>
+<li>可以检测是否安装成功及安装的版本。</li>
 </ul>
 </li>
 </ul>
-<h3 id="browser-sync"><a name="user-content-browser-sync" href="#browser-sync" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>browser-sync</h3>
+<h3 id="npm_2"><a name="user-content-npm_2" href="#npm_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>npm的使用</h3>
+<ul>
+<li>在项目目录安装shift键，右键选择打开命令窗口。</li>
+<li>初始化:<code>npm init</code>，命名，默认按回车，会生成一个package.json文件。</li>
+<li>安装指定包:<code>npm install jquery --save</code>；会把文件信息保存到package.json中<ul>
+<li>安装指定版本：<code>npm install jquery@3.0.0 --save</code></li>
+<li>具体安装包的名字可以去npm官网上查询。</li>
+</ul>
+</li>
+<li>删除指定包:<code>npm remove jquery --save</code>；会把文件信息从package.json中删除</li>
+<li>下载package.json中dependencies属性对的文件:<code>npm install --production</code></li>
+</ul>
+<h3 id="browser-sync"><a name="user-content-browser-sync" href="#browser-sync" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>浏览器同步测试工具browser-sync</h3>
 <ul>
 <li>更改代码之后自动刷新浏览器</li>
-<li>需要使用npm进行全局安装:<code>npm install browser-sync -g</code>,-g表示安装到全局</li>
+<li>window分屏：win+p。通过数据线连接显示屏，然后进行显示设置。</li>
+<li>需要使用npm进行全局安装:<ul>
+<li><code>npm install browser-sync -g</code>,-g表示安装到全局</li>
+<li>全局安装可以在<code>C:\Users\linfeng\AppData\Roaming\npm</code>目录下查看</li>
+</ul>
+</li>
 <li>检查是否安装成功 <code>browser-sync --version</code></li>
-<li>使用:<code>browser-sync start --server --files "./index.html,app.css,./css/*.css,*.*"</code></li>
+<li>browser-sync的使用<ul>
+<li><code>browser-sync start --server --files "./index.html,app.css,./css/*.css,*.*"</code>。</li>
 <li>&ndash;files参数指定要监视的文件，后面跟要监视的文件的文件路径以逗号分隔。</li>
 </ul>
-<h2 id="gulp"><a name="user-content-gulp" href="#gulp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>gulp</h2>
-<p><a href="http://www.gulpjs.com">官网</a><br />
-<a href="http://www.gulpjs.com.cn">中文网</a></p>
-<ul>
-<li>
-<p>前端自动化构建工具<br />
-  js压缩,var x,xname，混淆<br />
-  合并.<br />
-  css压缩<br />
-  html压压缩</p>
 </li>
-<li>
-<p>grunt ,webpack&hellip;</p>
-</li>
+<li>browser-sync在加载外联样式的时候属于异步加载，不用刷新页面就能显示效果。</li>
+<li>browser-sync可以在多个浏览器上打开页面，同步测试浏览器间的兼容性问题。</li>
+<li>可以根据服务器后台管理设置浏览器间同步的选项。</li>
 </ul>
-<h3 id="5"><a name="user-content-5" href="#5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>核心就5个方法</h3>
+<h3 id="gulp"><a name="user-content-gulp" href="#gulp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>前端代码自动化构建工具gulp</h3>
+<p><a href="http://www.gulpjs.com">官网</a><br />
+<a href="http://www.gulpjs.com.cn">中文网</a><br />
+  - 前端代码自动化构建工具<br />
+    + js压缩：对空格等进行压缩。<br />
+    + js混淆：对变量名进行简化。<br />
+    + 代码的合并。<br />
+    + css压缩。<br />
+    + html压缩：空格换行符等。<br />
+  - 其它工具grunt ,webpack&hellip;相比gulp比较简洁高效。</p>
+<h3 id="gulp5"><a name="user-content-gulp5" href="#gulp5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>gulp的核心共有5个方法</h3>
 <ul>
 <li>task,gulp中是一个个任务的形式来实现功能。<ul>
 <li>task(&lsquo;任务名&rsquo;,function(){<br />
   .....<br />
-});</li>
+});只执行一次。</li>
 </ul>
 </li>
-<li>src<ul>
+<li>src：知道要处理的文件<ul>
 <li>src(&lsquo;./*.js&rsquo;)</li>
 </ul>
 </li>
-<li>dest(&lsquo;./minjs/&rsquo;)// 指定处理后的文件的输出路径.</li>
-<li>watch(&lsquo;./*.js&rsquo;,[&lsquo;任务名1&rsquo;,&rsquo;任务名2&rsquo;]);</li>
-<li>run(&lsquo;任务名&rsquo;);//执行指定的任务.</li>
+<li>dest(&lsquo;./minjs/&rsquo;)；指定处理后的文件的输出路径.</li>
+<li>watch(&lsquo;./*.js&rsquo;,[&lsquo;任务名1&rsquo;,&rsquo;任务名2&rsquo;]);监视文件变化执行任务。</li>
+<li>run(&lsquo;任务名&rsquo;);执行指定的任务.</li>
 </ul>
 <h3 id="gulp_1"><a name="user-content-gulp_1" href="#gulp_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>gulp的安装</h3>
 <ul>
-<li>使用npm 进行安装</li>
-<li><code>npm install gulp-cli -g</code>;</li>
+<li>使用npm进行全局安装</li>
+<li><code>npm install gulp-cli -g</code>。</li>
+<li>查看版本:<code>gulp -v</code>。</li>
 </ul>
 <h3 id="gulp_2"><a name="user-content-gulp_2" href="#gulp_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>gulp 使用</h3>
-<h4 id="npmgulp"><a name="user-content-npmgulp" href="#npmgulp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>使用时还需要在项目中通过npm非全局安装gulp</h4>
 <ul>
+<li>在项目中通过npm非全局安装gulp<ul>
 <li><code>npm install gulp --save-dev</code></li>
+<li>&ndash;save-dev：将模块写入到package.json的devDependencies 对象中</li>
+<li>使用<code>npm install</code>下载dependencies和devDependencies中的模块</li>
 </ul>
-<h4 id="gulpfilejs"><a name="user-content-gulpfilejs" href="#gulpfilejs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>还需要在当前项目根目录添加一个gulpfile.js文件来写具体的任务代码.</h4>
-<h3 id="gulp_3"><a name="user-content-gulp_3" href="#gulp_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>gulp的一些插件</h3>
-<ul>
-<li>也是使用npm安装</li>
+</li>
+<li>在项目根目录添加一个gulpfile.js文件来写具体的任务代码。<ul>
+<li>通过<code>var gulp = require("gulp");</code>来引用模块。</li>
+</ul>
+</li>
+<li>gulp使用的一些模块<ul>
+<li>使用npm安装对应模块</li>
 <li>对js代码进行压缩 gulp-uglify</li>
 <li>对代码进行合并 gulp-concat</li>
 <li>对css进行压缩 gulp-cssnano</li>
 <li>对html进行压缩 gulp-htmlmin</li>
 <li>对文件进行监视 browser-sync</li>
+</ul>
+</li>
 </ul></article></body></html>
